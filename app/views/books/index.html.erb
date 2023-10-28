@@ -1,6 +1,13 @@
 <h1>Books#index</h1>
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+  <P>Title</P>
+  <span><%= book.title %></span>
+<% end %>
+
 <h1>User info</h1>
-<%= form_with model: User do 
+ 
 
 
 
