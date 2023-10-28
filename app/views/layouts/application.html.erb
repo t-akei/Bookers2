@@ -6,7 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,29 +15,29 @@
     <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Home", #URL %>
+          <%= link_to "Home", users_path %>
         </li>
         <li>
-          <%= link_to "Users", #URL %>
+          <%= link_to "Users", users_path %>
         </li>
         <li>
-          <%= link_to "Books", #URL %>
+          <%= link_to "Books", books_path %>
         </li>
         <li>
-          <%= link_to "Log out", #URL, method: :delete %>
+          <%= link_to "Log out", root_path, method: :delete %>
         </li>
       <% else %>
         <li>
-          <%= link_to "Home", #URL %>
+          <%= link_to "Home", root_path %>
         </li>
         <li>
-          <%= link_to "About", #URL %>
+          <%= link_to "About", about_path %>
         </li>
         <li>
-          <%= link_to "sign up", #URL %>
+          <%= link_to "sign up", new_user_registration_path %>
         </li>
         <li>
-          <%= link_to "Log in", #URL %>
+          <%= link_to "Log in", new_user_session_path %>
         </li>
       <% end %>
     </header>
