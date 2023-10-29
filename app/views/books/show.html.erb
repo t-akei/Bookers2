@@ -1,7 +1,7 @@
 <h1>Book detail</h1>
 <div>
-  <%= image_tag @user.get_profile_image %>
-  <P><%= @user.name %></P>
+  <%= image_tag @book.get_profile_image %>
+  <P><%= @book.user.name %></P>
 </div>
 
 <table>
@@ -10,6 +10,10 @@
        <tr>
          <td><%= book.title %></td>
          <td><%= book.body %></td>
+       <% if @book.user == current_user %>
+         <td><%= kink_to "Edit", edit_book_path(@book.id) %></yd>
+         <td><%= link_to "Destroy", books_path, method: :delete %></td>
+       <% end %>
        </tr>
     <% end %>   
   </tbody>

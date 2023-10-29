@@ -25,3 +25,7 @@ def after_sign_in_path_for(resource)
 　  root_path
 　end
 
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100, 100) %>
+</div>
