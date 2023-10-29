@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-  <%= @user.each do |user| %>
+  <%= @book.each do |book| %>
     <tr>
       <td><%= image_tag @user.get_profile_image %></td>
-      <td><%= user.title %></td>
-      <td><%= user.body %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
     </tr>
   <% end %>
   </tbody>

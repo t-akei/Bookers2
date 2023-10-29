@@ -1,0 +1,33 @@
+<h1>User info</h1>
+<%= image_tag user.get_profile_image %>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>introduction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% user.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.introduction %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h1>New book</h1>
+
+<%= form_with model: Book.new do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
