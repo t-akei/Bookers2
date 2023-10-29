@@ -15,7 +15,7 @@
          <td><%= book.title %></td>
          <td><%= book.body %></td>
        <% if @book.user == current_user %>
-         <td><%= kink_to "Edit", edit_book_path(@book.id) %></yd>
+         <td><%= link_to "Edit", edit_book_path(@book.id) %></yd>
          <td><%= link_to "Destroy", books_path, method: :delete %></td>
        <% end %>
        </tr>
