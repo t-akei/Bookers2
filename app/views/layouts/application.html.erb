@@ -25,44 +25,44 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to users_path(current_user.id) do %>
-                <i class="text-white fa-solid fa-house"></i>Home
+              <%= link_to users_path(current_user.id), class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-house"></i> Home
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to users_path do %>
-                <i class="text-white fa-solid fa-users"></i>Users
+              <%= link_to users_path, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-users"></i> Users
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to books_path do %>
-                <i class="text-white fa-solid fa-book-open"></i>Books
+              <%= link_to books_path, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-book-open"></i> Books
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="text-white fa-solid fa-right-from-bracket"></i>Log out
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-right-from-bracket"></i> Log out
               <% end %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to root_path do %>
-                <i class="text-white fa-solid fa-house"></i>Home
+              <%= link_to root_path, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-house"></i> Home
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to about_path do %>
-                <i class="text-white fa-solid fa-link"></i>About
+              <%= link_to about_path, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-link"></i> About
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_registration_path, method: :get do %>
-                <i class="text-white fa-solid fa-user-plus"></i>sign up
+              <%= link_to new_user_registration_path, method: :get, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-user-plus"></i> Sign up
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_session_path do %>
-                <i class="text-white fa-solid fa-right-to-bracket"></i>Log in
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                <i class="text-white fa-solid fa-right-to-bracket"></i> Log in
               <% end %>
             </li>
             <% end %>
