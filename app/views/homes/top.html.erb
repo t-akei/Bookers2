@@ -1,18 +1,30 @@
-<h1>
-   welcome to
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers</strong>
-   !!
-</h1>
-<p>
-   In
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers</strong>
-   ,
-</p>
-<P>you can share and exchange your opinions , inpressions , and emotions</P>
-<p>about various books!</p>
+<P id="notice"></P>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg8 col-xl-6">
+      <h1>
+         welcome to
+        <i class="fa-solid fa-book"></i>
+        <strong>Bookers</strong>
+          !!
+      </h1>
+      <p>
+        In
+        <i class="fa-solid fa-book"></i>
+        <strong>Bookers</strong>
+      </p>
+      <P>you can share and exchange your opinions , inpressions , and emotions</P>
+      <p>about various books!</p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class:"btn btn-sm btn-block mb-3 btn-info" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, method: :get, class:"btn btn-sm btn-block mb-3 btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Log in", new_user_session_path %>
-<%= link_to "Sign up", new_user_registration_path, method: :get %>
 
