@@ -34,3 +34,7 @@ def after_sign_in_path_for(resource)
   <%= f.text_field :name %>
   
   <h4>Image</h4>
+  
+  "
+  "
+  "
