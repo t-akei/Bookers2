@@ -112,3 +112,24 @@ def after_sign_in_path_for(resource)
   <%= f.submit 'Create Book', class:"btn btn-success" %>
 
 <% end %>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @book, method: :patch do |f| %>
+
+  <h4></h4>
+  <%= f.text_field :title %>
+
+  <h4></h4>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit  %>
+
+<% end %>
