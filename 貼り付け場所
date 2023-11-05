@@ -133,3 +133,10 @@ def after_sign_in_path_for(resource)
   <%= f.submit  %>
 
 <% end %>
+
+if @book.user == current_user
+      redirect_to edit_book_path(current_user.id)
+    else
+      @books = Book.all
+      redirect_to books_path(@books)
+    end
