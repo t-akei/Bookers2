@@ -6,25 +6,28 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   
-  # フォローする自分、自分にフォローされたの関係を表す
+  # フォローする、フォローされたの関係を表す
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 擬似アソシエーションしたfollower/followedモデルをUserモデルが持っているように記述して
   # class_nameでUserモデルの本当のアソシエーション先であるRelationshipを指定して
   # foreign_keyはRelationshipモデルが外部キーとして何カラムを持つかを表している
+  # class_name以降の情報をfollowers/followedそれぞれに代入しているようなイメージ
   
   
-  # フォロー一覧で使う
+  # フォロー/フォロワーの一覧で使う
   
-  # フォローする方
-  has_many :follower_users, through: :relationships, source: :follower
-  # 架空のfollower_usersモデルが中間テーブルrelationshipsを通して
-  # 実際にフォローするユーザーのデータを取得しにいく擬似モデルfollowerモデル(=Relationshipモデル)をsourceで記述している
+  # フォローする側一覧
+  has_many :follower_users, through: :followers, source: :followed
+  # フォローする側が、誰をフォローしているのか情報が欲しい。だから10行目のfollowersを通して
+  # フォローする側が持ってる、フォローする側がフォローした(=フォローされた)ユーザー情報をsourceで取得している
+  # だからsource:は「フォローされた」であるfollowed
   
-  # 自分にフォローされる方
-  has_many :followed_users, through: :relationships, source: :followed
-  # 架空のfollowed_usersモデルが中間テーブルrelationshipsを通して
-  # 擬似モデルfollowedから自分がフォローするユーザーのデータをsourceで実際に取得している
+  # フォローされてる側(フォロワー)一覧
+  has_many :followed_users, through: :followeds, source: :follower
+  # フォローされている側が、誰にフォローされているのか情報が欲しい。だから11行目followedsを通して
+  # フォローされている側が持っている、誰がフォローしているのかのユーザー情報をsourceで取得している
+  # だからsource:は「フォローしている(言い換えると：フォローする)」であるfollower
 
   has_one_attached :profile_image
 
