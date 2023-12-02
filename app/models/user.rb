@@ -5,10 +5,26 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :follow, through: :relationships, source: :follower
-  has_many :follow, through: :relationships, source: :followed
+  
+  # フォローする自分、自分にフォローされたの関係を表す
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 擬似アソシエーションしたfollower/followedモデルをUserモデルが持っているように記述して
+  # class_nameでUserモデルの本当のアソシエーション先であるRelationshipを指定して
+  # foreign_keyはRelationshipモデルが外部キーとして何カラムを持つかを表している
+  
+  
+  # フォロー一覧で使う
+  
+  # フォローする方
+  has_many :follower_users, through: :relationships, source: :follower
+  # 架空のfollower_usersモデルが中間テーブルrelationshipsを通して
+  # 実際にフォローするユーザーのデータを取得しにいく擬似モデルfollowerモデル(=Relationshipモデル)をsourceで記述している
+  
+  # 自分にフォローされる方
+  has_many :followed_users, through: :relationships, source: :followed
+  # 架空のfollowed_usersモデルが中間テーブルrelationshipsを通して
+  # 擬似モデルfollowedから自分がフォローするユーザーのデータをsourceで実際に取得している
 
   has_one_attached :profile_image
 
