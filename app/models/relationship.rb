@@ -9,4 +9,6 @@ class Relationship < ApplicationRecord
 # 上記と同じくUserモデルから参照して
 # 擬似モデルfollowed(フォローされる)モデルに
 # Relationshipモデルが属しているように記述
+
+
 end

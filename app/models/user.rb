@@ -28,7 +28,24 @@ class User < ApplicationRecord
   # フォローされている側が、誰にフォローされているのか情報が欲しい。だから11行目followedsを通して
   # フォローされている側が持っている、誰がフォローしているのかのユーザー情報をsourceで取得している
   # だからsource:は「フォローしている(言い換えると：フォローする)」であるfollower
-
+  
+  # フォローするときの処理
+  # なせ引数がuser_id？Userモデルに記述、かつusersテーブルが持っているカラム
+  # id,name,introductionだから引数はuser.idでは？
+  def follow(user_id)
+    followers.create(followed_id: user_id)
+  end
+  
+  # フォローを外す時の処理
+  def unfollow(user_id)
+    followers.find_by(followed_id: user_id).destroy
+  end
+    
+  #フォローしていればtrueを返す 
+  def following?(user)
+    follower_users.include?(user)
+  end
+    
   has_one_attached :profile_image
 
   validates :name, uniqueness: true, length: { in: 2..20 }
