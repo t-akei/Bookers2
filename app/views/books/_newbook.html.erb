@@ -22,7 +22,7 @@
           <tr>
             <th>followers</th>
             <th><%= link_to user_followed_path(user) do %>
-                  <%= user.followeds.cout %>
+                  <%= user.followeds.count %>
                 <% end %>
             </th>
           </tr>
