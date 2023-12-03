@@ -34,6 +34,7 @@ class User < ApplicationRecord
   # id,name,introductionだから引数はuser.idでは？
   def follow(user_id)
     followers.create(followed_id: user_id)
+    # 擬似テーブルで分けてても元は同じrelationshipだから互いのカラムは使える？
   end
   
   # フォローを外す時の処理
