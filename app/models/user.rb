@@ -41,9 +41,13 @@ class User < ApplicationRecord
     followers.find_by(followed_id: user_id).destroy
   end
     
-  #フォローしていればtrueを返す 
+  #フォローしていればtrueを返す、フォローしてない場合はfalseを返す
+  # `following?`メソッドは、あるユーザーが別のユーザーをフォローしているかどうかを確認するためのメソッド
   def following?(user)
     follower_users.include?(user)
+    # `following?`メソッドは、follower_users(フォローするユーザーの擬似モデル)
+    # 内に、following?(user)で指定したuser情報が含まれているか
+    # 判定するためにinclude?メソッドを使用している
   end
     
   has_one_attached :profile_image
