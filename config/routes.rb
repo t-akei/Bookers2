@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     # 上記２つもUserモデルにネストする関係だからdo~end内に記述
   end
   get '/home/about' => 'homes#about', as: 'about'
+  get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
