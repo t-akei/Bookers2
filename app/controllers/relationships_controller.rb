@@ -12,6 +12,8 @@ class RelationshipsController < ApplicationController
   def follower
     user = User.find(params[:user_id])
     @users = user.follower_users
+    # has_manyでUserモデルがfollower_usersをアソシエーションしている(持っている)から
+    # user.とすることで「ユーザーモデルの」関係者としてfollower_usersテーブルを持ってこられる
   end
   
   def followed
