@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <%= form_with url: search_path, method: :get do |f| %>
     <%= f.text_field :content %>
-    <!--contentをtextに変えてもOK。：の後に入るのはモデルのカラム-->
+    <!--content(=検索内容)をtextに変えてもOK。：の後に入るのはモデルのカラム-->
     <!--だけでなくフォームフィールド(フォーム内の入力フィールド(箇所)や-->
     <!--選択フィールド(箇所))を表す単語も入れられる-->
     <%= f.select :model, options_for_select(["User", "Book"]) %>
@@ -13,6 +13,7 @@
     <!--例えば、固定の選択肢を持つプルダウンメニューのオプションや-->
     <!--あらかじめ定義された色のリストなどが典型的な静的な配列の使用例-->
     <%= f.select :method, options_for_select(["完全一致", "前方一致", "後方一致", "部分一致"]) %>
+    <!--methodは検索方法-->
     <%= f.subnit "検索" %>
     <% end %>
-<% end 
+<% end %>
