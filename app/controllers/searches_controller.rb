@@ -5,9 +5,9 @@ class SearchesController < ApplicationController
     @method = params[:method]
     
     if @model == "User"
-      @records = User.search_for(@content, @method)
+      @users = User.search_for(@content, @method)
     else
-      @records = Book.search_for(@content, @method)
+      @books = Book.search_for(@content, @method)
     end
   end
 end
