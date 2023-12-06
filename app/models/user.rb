@@ -50,6 +50,18 @@ class User < ApplicationRecord
     # 内に、following?(user)で指定したuser情報が含まれているか
     # 判定するためにinclude?メソッドを使用している
   end
+  
+  def search_for(content, mrthod)
+    if method == "完全一致"
+      User.where(name: content)
+    elsif method == "前方一致"
+      User.where('name LIKE ?', content + '%')
+    elsif method == "後方一致"
+      User.where('name LIKE ?', '%' + content)
+    else method == "部分一致"
+      User.where('name Like ?', '%' + content + '%')
+    end
+  end
     
   has_one_attached :profile_image
 
