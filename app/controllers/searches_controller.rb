@@ -4,10 +4,10 @@ class SearchesController < ApplicationController
     @content = params[:content]
     @method = params[:method]
     
-    if @model == "User"
+    # if @model == "User"
       @users = User.search_for(@content, @method)
-    else
+    # else
       @books = Book.search_for(@content, @method)
-    end
+    # end
   end
 end
