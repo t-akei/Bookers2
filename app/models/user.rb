@@ -51,7 +51,7 @@ class User < ApplicationRecord
     # 判定するためにinclude?メソッドを使用している
   end
   
-  def search_for(content, mrthod)
+  def self.search_for(content, method)
     if method == "完全一致"
       User.where(name: content)
     elsif method == "前方一致"

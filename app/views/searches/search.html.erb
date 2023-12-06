@@ -38,8 +38,8 @@
       </tr>
     <% end %>
   </table>
-<% else @model == 'Book' %>
-  <h3>Books search for "<%= content %>"</h3>
+<% elsif @model == 'Book' %>
+  <h3>Books search for "<%= @content %>"</h3>
   <table class="table table-hover table-inverse">
     <thead>
       <tr>
@@ -67,3 +67,4 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
