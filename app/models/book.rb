@@ -13,8 +13,8 @@ class Book < ApplicationRecord
     # 存在するかどうかをチェックする」メソッド
     # favorites.exists?(user_id: user.id) は、favoritesテーブルには、user_idカラムにuser.idを持ったレコードが
     # 存在しますか？ということ。
-    # このメソッドを使うと(例)book.favorited_by?(user)とした場合
-    # ある投稿(book)が引数の(user)によって「いいね」されているかorいないか、を判断できる
+    # このメソッドを使うと(例)book.favorited_by?(current_user)とした場合
+    # ある投稿(book)が引数の(current_user)によって「いいね」されているかorいないか、を判断できる
     # ユーザがいいねしている場合はtrueを、していない場合はfalseを返す。
   
   
