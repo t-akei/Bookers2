@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   # いいねをする機能
   def create
-    book = Book.find(params:id)
+    book = Book.find(params[:book_id])
     favorite = current_user.favorites.new(book_id: book.id)
     # current_user(今ログインしているユーザー)のfavoritesテーブル(レコード)
     # を.newで新規作成しようとしている。
