@@ -12,7 +12,10 @@ class Book < ApplicationRecord
     # exists?メソッドは「与えられた条件に合致するレコードが
     # 存在するかどうかをチェックする」メソッド
     # favorites.exists?(user_id: user.id) は、favoritesテーブルには、user_idカラムにuser.idを持ったレコードが
-    # 存在しますか？ということ
+    # 存在しますか？ということ。
+    # このメソッドを使うと(例)book.favorited_by?(user)とした場合
+    # ある投稿(book)が引数の(user)によって「いいね」されているかorいないか、を判断できる
+    # ユーザがいいねしている場合はtrueを、していない場合はfalseを返す。
   
   
   def self.search_for(content, method)
