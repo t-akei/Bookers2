@@ -1,6 +1,19 @@
 class Book < ApplicationRecord
 
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  
+  # Bookモデルにfavorited_by?(user)メソッドを追加している
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+    # favoritesテーブルはBookモデルとFavoriteモデルをアソシエーションしたから
+    # 使用できる。
+    # exists?メソッドは「与えられた条件に合致するレコードが
+    # 存在するかどうかをチェックする」メソッド
+    # favorites.exists?(user_id: user.id) は、favoritesテーブルには、user_idカラムにuser.idを持ったレコードが
+    # 存在しますか？ということ
+  
   
   def self.search_for(content, method)
     if method == '完全一致'
