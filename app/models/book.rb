@@ -2,6 +2,7 @@ class Book < ApplicationRecord
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
   
   # Bookモデルにfavorited_by?(user)メソッドを追加している
   def favorited_by?(user)
