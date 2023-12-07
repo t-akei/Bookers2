@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'favorites/create'
-  get 'favorites/destroy'
   devise_for :users
   root to: 'homes#top'
 
-  resources :books, only: [:create, :index, :show, :edit, :update, :destroy]
+  resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  # do~end のネスト（関連付け）は、異なるリソース間の親子関係を表現するための仕組み
+  # 「いいね」は投稿に対してされるのでbooksコントローラとネストする。
+  # いいねの削除を行う際には、いいねをしたユーザーIDとされた投稿IDがわかれば
+  # どのいいねを削除するかを特定できる。favoriteのIDは無くても問題ない。
+  # そのため、favoritesテーブルはidが含まれない子の関係であるresourceになる。
+  
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     
