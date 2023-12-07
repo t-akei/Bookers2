@@ -3,6 +3,10 @@ class FavoritesController < ApplicationController
   def create
     book = Book.find(params:id)
     favorite = current_user.favorites.new(book_id: book.id)
+    # current_user(今ログインしているユーザー)のfavoritesテーブル(レコード)
+    # を.newで新規作成しようとしている。
+    # 但し.newしているだけで、current_user.favorites.new(book_id: book.id)という
+    # このデータ(=インスタンス)はまだデータベースに保存されていない。
     favorite.save
     redirect_to request.referer
   end
