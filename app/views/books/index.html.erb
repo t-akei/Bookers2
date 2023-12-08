@@ -43,7 +43,9 @@
                 <% end %>
               </td>
               <td><%= book.body %></td>
-              <td><%= render 'favorites/btn', book: book %></td>
+              <td id="favorite_btn_<%= book.id %>">
+                <%= render 'favorites/btn', book: book %>
+              </td>
               <!--部分テンプレートの ローカル変数: 渡す値 の渡す値は-->
               <!--必ずしもインスタンス変数でなくて良い。-->
               <!--上記のようにローカル変数: ローカル変数でもOK-->
