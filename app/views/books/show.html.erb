@@ -9,32 +9,36 @@
       <%= render 'books/newbook', user: @user, book: @book_new %>
     </div>
     <div class="col-md-8 offset-md-1">
-
-<h2>Book detail</h2>
-<table class="table">
-  <tbody>
-    <tr>
-      <td><%= link_to user_path(@user.id) do %>
-            <%= image_tag @user.get_profile_image(100, 100) %>
-          <% end %><br>
-          <%= link_to user_path(@user.id) do %>
-            <%= @user.name %>
-          <% end %>
-      </td>
-      <td><%= link_to book_path(@book.id) do %>
-            <%= @book.title %>
-          <% end %>
-      </td>
-      <td><%= @book.body %></td>
-      <td><%= render 'favorites/btn', book: @book %></td>
-      <td>コメント数: <%= @book.comment.count </td>
-      
-    <% if @book.user == current_user %>
-      <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success" %></td>
-      <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger", "data-confilm" => "本当に消しますか？" %></td>
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+    <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= link_to user_path(@user.id) do %>
+                <%= image_tag @user.get_profile_image(100, 100) %>
+              <% end %><br>
+              <%= link_to user_path(@user.id) do %>
+                <%= @user.name %>
+              <% end %>
+          </td>
+          <td><%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+          </td>
+          <td><%= @book.body %></td>
+          <td><%= render 'favorites/btn', book: @book %></td>
+          <td>コメント数: <%= @book.book_comments.count %></td>
+          
+        <% if @book.user == current_user %>
+          <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success" %></td>
+          <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger", "data-confilm" => "本当に消しますか？" %></td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <%= render 'book_comments/index', book: @book %>
+    <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
+    </div>
+  </div>
+</div>
 
 
