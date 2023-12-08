@@ -9,6 +9,13 @@
         <% end %>
       </td>
       <td><%= book_comment.comment %></td>
+      <td>
+        <% if book_comment.user == current_user %>
+          <%= link_to "Destroy", book_book_comments_path(book_comment), method: :delete, class:"btn btn-danger" %>
+                                  <!--どのコメントを削除するのか？の引数-->
+        <% end %>
+      </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
