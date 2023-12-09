@@ -1,8 +1,11 @@
-<%= form_with model: [book, book_comment] do |f| %>
-  <%= f.text_area :comment, rows:'5', class:"w-100" %><br>
+<%= form_with model: [book, book_comment], local: false do |f| %>
+  <%= f.text_area :comment, rows:'5', class:"w-100", id: "comment_textarea" %><br>
   <%= f.submit "送信" %>
 <% end %>
 <!--form_withに対して、[book, book_comment]のように、配列で2つの変数を指定している。-->
 <!--特定の本に対してコメントを投稿する場合、そのコメントはその本と関連付けられる。-->
 <!--この場合、コメント投稿フォームはコメントの内容(book_comment)だけでなく-->
 <!--どの本(book)に対するコメントなのかもフォームで指定する必要がある。-->
+<!--form_withヘルパーではlocal: falseを指定することで、非同期通信を行うことができる-->
+<!--また、非同期通信を行いたい箇所(今回はコメント投稿フォームに文字を残したくない=ページ全体がリロードされない非同期通信の場合コメント文字が残ってしまう)-->
+<!--にid属性を付与する事で非同期通信の印になる-->
