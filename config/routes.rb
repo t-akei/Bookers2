@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
-    resource :book_comments, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
   end
   # do~end のネスト（関連付け）は、異なるリソース間の親子関係を表現するための仕組み
   # 「いいね」は投稿に対してされるのでbooksコントローラとネストする。
