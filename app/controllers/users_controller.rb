@@ -46,7 +46,8 @@ before_action :ensure_guest_user, only: [:edit]
   
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.email == "guest@example.com"
+    if @user.guest_user?
+    #(=@user.email == "guest@example.com") Userモデルにguest_user?メソッド記載
       redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
