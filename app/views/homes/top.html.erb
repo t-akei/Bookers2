@@ -1,6 +1,6 @@
-<duv>
+<div>
   <%= flash[:notice] %>
-</duv>
+</div>
 <main>
   <P id="notice"></P>
   <div class="container">
@@ -20,6 +20,9 @@
         <P>you can share and exchange your opinions , inpressions , and emotions</P>
         <p>about various books!</p>
         <div class="btn-wrapper col-10 mx-auto">
+          <div class="row">
+            <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class:"btn btn-secondary btn-sm btn-block mb-3 sign_in", method: post %>
+          </div>
           <div class="row">
             <%= link_to "Log in", new_user_session_path, class:"btn btn-sm btn-block mb-3 btn-info" %>
           </div>
