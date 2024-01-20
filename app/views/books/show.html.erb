@@ -34,7 +34,7 @@
             <%= render 'book_comments/count', book: @book %>
           </td>
           <!--コメント数もリロードせず更新したいのでidをつける-->
-          
+
         <% if @book.user == current_user %>
           <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success" %></td>
           <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger", "data-confilm" => "本当に消しますか？" %></td>
@@ -43,9 +43,9 @@
       </tbody>
     </table>
     <div id="comment_index">
-      <%= render 'book_comments/index', book: @book %>
+      <%= render 'book_comments/index', book: @book, comment_reply: @comment_reply %>
     </div>
-    
+
     <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
     </div>
   </div>

@@ -4,7 +4,7 @@
     <% book.book_comments.each do |book_comment| %>
     <tr>
       <td>
-        <%= link_to user_path(book_comment.user) do %>
+        <%= link_to user_path(book_comment.user.id) do %>
           <%= image_tag book_comment.user.get_profile_image(50, 50) %><br>
           <%= book_comment.user.name %>
         <% end %>
@@ -17,6 +17,18 @@
         <% end %>
       </td>
     </tr>
+     <%= book_comment.replies.each do |reply| %>
+    <tr>
+      <td><%= reply.user.name %></td>
+      <td><%= reply.comment %></td>
+    </tr>
+     <% end %>
+
+     <%= form_with model: [@book, @comment_reply] do |f| %>
+       <%= f.label :reply %>
+       <%= f.text_area :comment %>
+       <%= f.submit "返信投稿" %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

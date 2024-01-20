@@ -3,6 +3,7 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = @book.id
+    @comment_reply = @book.book_comments.new
     comment.save
     # redirect_to request.referer
     # 非同期通信を行う場合は、JavaScriptファイル（.js.erb）を使用して
@@ -12,15 +13,17 @@ class BookCommentsController < ApplicationController
 
   def destroy
     @book = Book.find(params[:book_id])
+    @comment_reply = @book.book_comments.new
+
     comment = BookComment.find(params[:id])
     comment.destroy
     # redirect_to request.referer
   end
-  
+
   private
-  
+
   def book_comment_params
-    params.require(:book_comment).permit(:comment)
+    params.require(:book_comment).permit(:comment, :user_id, :book_id, :parent_id)
   end
 
 end
