@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  
+
   # Bookモデルにfavorited_by?(user)メソッドを追加している
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -17,8 +17,8 @@ class Book < ApplicationRecord
     # このメソッドを使うと(例)book.favorited_by?(current_user)とした場合
     # ある投稿(book)が引数の(current_user)によって「いいね」されているかorいないか、を判断できる
     # ユーザがいいねしている場合はtrueを、していない場合はfalseを返す。
-  
-  
+
+
   def self.search_for(content, method)
     if method == '完全一致'
       Book.where(title: content)
@@ -30,8 +30,8 @@ class Book < ApplicationRecord
       Book.where('title LIKE ?', '%' + content + '%')
     end
   end
-  
+
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-  
+
 end
